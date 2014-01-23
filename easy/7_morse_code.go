@@ -58,12 +58,12 @@ func main() {
 	fmt.Println("Welcome to the morse code translator.")
 	
 	for x := 0; x == 0;{
-		fmt.Println("Start with English or Morse Code?")	// Menu options
+		fmt.Println("Start with English or Morse Code?")		// Menu options
 		fmt.Println("     [E]nglish")
 		fmt.Println("     [M]orse Code")
 		fmt.Println("     [Q]uit")
 		fmt.Printf("Enter text: ")
-		_, err := fmt.Scanln(&input)						// Menu selection
+		_, err := fmt.Scanln(&input)					// Menu selection
 		if err != nil {
 			log.Fatalf("%s", err)
 		}
@@ -110,7 +110,7 @@ func convert(to_morse bool, code string) {
 		now_string = string(v)
 		for key, value := range morse_code {
 			
-			switch to_morse {								// convert english <=> morse code
+			switch to_morse {					// convert english <=> morse code
 			case true:
 				if now_string == key {converted[i] = value}	// english to morse code
 			case false:	
@@ -132,12 +132,12 @@ func morse_format(code string) []string{
 		morse_action := ""
 		
 		if now_string == " " || now_string == "/"{			// check if end of letter or word
-			switch now_string {								// Set action for end of letter or word
+			switch now_string {					// Set action for end of letter or word
 			case " ": morse_action = " "
 			case "/": morse_action = "/"
 			default:  morse_action = ""
 			}
-			temp_morse = ""									// Clean out temp_morse
+			temp_morse = ""						// Clean out temp_morse
 			morse_counter += 1
 			morse_slice[morse_counter] = morse_action		// write in space or /
 			morse_counter += 1
@@ -145,7 +145,7 @@ func morse_format(code string) []string{
 		}
 
 		
-		temp_morse += now_string							// fill out temp_morse
+		temp_morse += now_string					// fill out temp_morse
 		morse_slice[morse_counter] = temp_morse				// fill morse_slice with temp_morse
 	}
 	return morse_slice
@@ -155,7 +155,7 @@ func english_format(code string) []string {
 	english_slice := make([]string, len(code))
 	
 	for i, value := range code {
-		english_slice[i] = string(value)					// Convert string to []string
+		english_slice[i] = string(value)				// Convert string to []string
 	}
 	
 	return english_slice
